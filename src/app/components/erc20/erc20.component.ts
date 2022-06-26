@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'tm-erc20',
@@ -7,7 +7,19 @@ import { FormBuilder } from '@angular/forms';
   styleUrls: ['./erc20.component.scss'],
 })
 export class Erc20Component implements OnInit {
+  public erc20FormGroup: FormGroup;
+
   constructor(private fb: FormBuilder) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.erc20FormGroup = this.fb.group({
+      name: ['', [Validators.required]],
+      symbol: ['', [Validators.required]],
+      supply: ['', [Validators.required]],
+    });
+  }
+
+  onSubmit(): void {
+    // Todo deploy token
+  }
 }

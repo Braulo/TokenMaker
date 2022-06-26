@@ -6,7 +6,6 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./navbar.component.scss'],
 })
 export class NavbarComponent implements OnInit {
-  public name: string = 'test';
   constructor() {}
 
   ngOnInit(): void {
@@ -26,4 +25,6 @@ export class NavbarComponent implements OnInit {
   getCurrentTheme(): string {
     return localStorage.getItem('theme') || '';
   }
+
+  async connectWallet() {}
 }

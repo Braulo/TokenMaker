@@ -25,3 +25,7 @@ a {
 .disabledlink {
   pointer-events: none;
 }
+
+.ng-invalid.ng-touched {
+  border-color: red;
+}

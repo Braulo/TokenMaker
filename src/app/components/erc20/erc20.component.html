@@ -1,1 +1,53 @@
-<p>erc20 works!</p>
+<div>
+  <form
+    [formGroup]="erc20FormGroup"
+    class="bg-white dark:bg-gray-900 shadow-md rounded px-8 pt-6 pb-8 mb-4"
+    (ngSubmit)="onSubmit()"
+  >
+    <div class="mb-4">
+      <label class="block dark:text-white text-sm font-bold mb-2" for="name">
+        Name*
+      </label>
+      <input
+        class="ng-invalid:bg-blue shadow appearance-none border rounded w-full py-2 px-3 text-black leading-tight focus:outline-none focus:shadow-outline"
+        id="name"
+        type="text"
+        placeholder="ExampleToken"
+        formControlName="name"
+      />
+    </div>
+    <div class="mb-4">
+      <label class="block dark:text-white text-sm font-bold mb-2" for="symbol">
+        Symbol*
+      </label>
+      <input
+        class="shadow appearance-none border rounded w-full py-2 px-3 text-black leading-tight focus:outline-none focus:shadow-outline"
+        id="symbol"
+        type="text"
+        placeholder="EXT"
+        formControlName="symbol"
+      />
+    </div>
+    <div class="mb-4">
+      <label class="block dark:text-white text-sm font-bold mb-2" for="supply">
+        Initial Supply*
+      </label>
+      <input
+        class="shadow appearance-none border rounded w-full py-2 px-3 text-black leading-tight focus:outline-none focus:shadow-outline"
+        id="supply"
+        type="number"
+        placeholder="10000"
+        formControlName="supply"
+      />
+    </div>
+    <div class="flex items-center justify-end">
+      <button
+        class="disabled:opacity-50 bg-[#133342] text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+        type="submit"
+        [disabled]="!erc20FormGroup.valid"
+      >
+        Create
+      </button>
+    </div>
+  </form>
+</div>

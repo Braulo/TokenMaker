@@ -1,3 +1,23 @@
-<h1 class="text-3xl underline dark:text-white">TokenMaker</h1>
-<tm-navbar></tm-navbar>
-<router-outlet></router-outlet>
+<div class="h-screen flex flex-col">
+  <tm-navbar></tm-navbar>
+
+  <div class="flex flex-col flex-grow justify-center items-center">
+    <div class="flex gap-4 p-4">
+      <button
+        class="p-2 bg-[#133342] hover:bg-gray-900 text-white font-bold rounded w-20"
+        [routerLink]="['erc20']"
+        routerLinkActive="bg-[#45172B]"
+      >
+        ERC20
+      </button>
+      <button
+        class="p-2 bg-[#133342] hover:bg-gray-900 text-white font-bold rounded w-20"
+        [routerLink]="['erc721']"
+        routerLinkActive="bg-[#45172B]"
+      >
+        ERC721
+      </button>
+    </div>
+    <router-outlet></router-outlet>
+  </div>
+</div>
