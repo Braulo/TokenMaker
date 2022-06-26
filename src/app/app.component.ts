@@ -7,8 +7,4 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'TokenMaker';
-
-  setTheme() {
-    document.body.classList.add('dark');
-  }
 }
