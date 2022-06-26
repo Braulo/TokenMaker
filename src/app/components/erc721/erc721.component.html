@@ -1,1 +1,64 @@
-<p>erc721 works!</p>
+<div>
+  <form
+    [formGroup]="erc721FormGroup"
+    class="bg-white dark:bg-gray-900 shadow-md rounded px-8 pt-6 pb-8 mb-4 h-96"
+    (ngSubmit)="onSubmit()"
+  >
+    <div class="mb-4">
+      <label
+        class="block dark:text-white text-sm font-bold mb-2"
+        for="collectionName"
+      >
+        Collection Name*
+      </label>
+      <input
+        class="ng-invalid:bg-blue shadow appearance-none border rounded w-full py-2 px-3 text-black leading-tight focus:outline-none focus:shadow-outline"
+        id="collectionName"
+        type="text"
+        placeholder="ApeImages"
+        formControlName="collectionName"
+      />
+    </div>
+    <div class="mb-4">
+      <label
+        class="block dark:text-white text-sm font-bold mb-2"
+        for="collectionSymbol"
+      >
+        Collection Symbol*
+      </label>
+      <input
+        class="shadow appearance-none border rounded w-full py-2 px-3 text-black leading-tight focus:outline-none focus:shadow-outline"
+        id="collectionSymbol"
+        type="text"
+        placeholder="APE"
+        formControlName="collectionSymbol"
+      />
+    </div>
+    <div class="mb-4">
+      <label class="block dark:text-white text-sm font-bold mb-2" for="image">
+        Image*
+      </label>
+      <input
+        name="imageUrl"
+        type="file"
+        accept="image/*"
+        (change)="handleInputChange($event)"
+        class="mb-4 shadow appearance-none border rounded w-full py-2 px-3 dark:text-white leading-tight focus:outline-none focus:shadow-outline"
+        formControlName="image"
+      />
+    </div>
+    <div class="flex items-center justify-end">
+      <button
+        class="disabled:opacity-50 bg-[#133342] text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+        type="submit"
+        [disabled]="!erc721FormGroup.valid"
+      >
+        Create
+      </button>
+    </div>
+  </form>
+  <div *ngIf="image">
+    <p class="dark:text-white">Your Image</p>
+    <img [src]="image" class="max-h-40" />
+  </div>
+</div>
