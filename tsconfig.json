@@ -1,10 +1,11 @@
 {
   "compileOnSave": true,
   "compilerOptions": {
-    "esModuleInterop": true,
     "baseUrl": "./",
     "outDir": "./dist/out-tsc",
+    "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
+    "resolveJsonModule": true,
     "strict": false,
     "noImplicitOverride": true,
     "noImplicitReturns": true,
@@ -24,6 +25,9 @@
     "enableI18nLegacyMessageIdFormat": false,
     "strictInjectionParameters": true,
     "strictInputAccessModifiers": true,
-    "strictTemplates": true
+    "strictTemplates": true,
+    "allowSyntheticDefaultImports": true,
+    "noImplicitAny": false,
+    "strictNullChecks": false
   }
 }

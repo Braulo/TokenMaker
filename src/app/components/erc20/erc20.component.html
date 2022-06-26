@@ -49,5 +49,11 @@
         Create
       </button>
     </div>
+    <div *ngIf="tokenAddress" class="mt-4 dark:text-white text-center">
+      <p>Awesome! Your Token is ready at:</p>
+      <p class="hover:text-[#133342] cursor-pointer" (click)="copyAddress()">
+        {{ tokenAddress }}
+      </p>
+    </div>
   </form>
 </div>

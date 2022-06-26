@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { WalletService } from '../../services/wallet-service/wallet.service';
 
 @Component({
   selector: 'tm-navbar',
@@ -6,9 +7,18 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./navbar.component.scss'],
 })
 export class NavbarComponent implements OnInit {
-  constructor() {}
+  public address: string;
+  public connected: boolean = false;
 
-  ngOnInit(): void {
+  constructor(private walletService: WalletService) {}
+
+  async ngOnInit() {
+    const connected = await this.walletService.setProvider();
+    if (connected) {
+      this.address = await this.walletService.provider.getSigner().getAddress();
+      this.connected = true;
+    }
+
     this.setTheme(localStorage.getItem('theme') || 'light');
   }
 
@@ -26,5 +36,10 @@ export class NavbarComponent implements OnInit {
     return localStorage.getItem('theme') || '';
   }
 
-  async connectWallet() {}
+  async connectWallet() {
+    this.connected = await this.walletService.connectWallet();
+    if (this.connected) {
+      this.address = await this.walletService.provider.getSigner().getAddress();
+    }
+  }
 }

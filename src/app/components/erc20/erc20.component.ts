@@ -1,5 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { BigNumber, ethers } from 'ethers';
+import {
+  abi,
+  bytecode,
+} from '../../../../artifacts/contracts/ERC20Token.sol/ERC20Token.json';
+import { WalletService } from '../../services/wallet-service/wallet.service';
+import copy from 'copy-to-clipboard';
 
 @Component({
   selector: 'tm-erc20',
@@ -8,8 +15,9 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 })
 export class Erc20Component implements OnInit {
   public erc20FormGroup: FormGroup;
+  public tokenAddress: string;
 
-  constructor(private fb: FormBuilder) {}
+  constructor(private fb: FormBuilder, private walletService: WalletService) {}
 
   ngOnInit(): void {
     this.erc20FormGroup = this.fb.group({
@@ -19,7 +27,27 @@ export class Erc20Component implements OnInit {
     });
   }
 
-  onSubmit(): void {
-    // Todo deploy token
+  async onSubmit(): Promise<void> {
+    const name = this.erc20FormGroup.get('name').value;
+    const symbol = this.erc20FormGroup.get('symbol').value;
+    const supply = this.erc20FormGroup.get('supply').value;
+
+    try {
+      const signer = this.walletService.provider.getSigner();
+      const erc20Contract = new ethers.ContractFactory(abi, bytecode, signer);
+      const contract = await erc20Contract.deploy(
+        name,
+        symbol,
+        BigNumber.from(supply)
+      );
+      await contract.deployed();
+      this.tokenAddress = contract.address;
+    } catch (error) {
+      alert('Something went wrong!');
+    }
+  }
+
+  copyAddress(): void {
+    copy(this.tokenAddress);
   }
 }
