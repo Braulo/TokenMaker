@@ -9,6 +9,7 @@ import { WalletService } from '../../services/wallet-service/wallet.service';
 export class NavbarComponent implements OnInit {
   public address: string;
   public connected: boolean = false;
+  public networkName: string;
 
   constructor(private walletService: WalletService) {}
 
@@ -17,6 +18,7 @@ export class NavbarComponent implements OnInit {
     if (connected) {
       this.address = await this.walletService.provider.getSigner().getAddress();
       this.connected = true;
+      this.networkName = (await this.walletService.provider.getNetwork()).name;
     }
 
     this.setTheme(localStorage.getItem('theme') || 'light');
@@ -40,6 +42,7 @@ export class NavbarComponent implements OnInit {
     this.connected = await this.walletService.connectWallet();
     if (this.connected) {
       this.address = await this.walletService.provider.getSigner().getAddress();
+      this.networkName = (await this.walletService.provider.getNetwork()).name;
     }
   }
 }

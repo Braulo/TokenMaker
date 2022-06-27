@@ -16,6 +16,7 @@ import copy from 'copy-to-clipboard';
 export class Erc20Component implements OnInit {
   public erc20FormGroup: FormGroup;
   public tokenAddress: string;
+  public isLoading: boolean = false;
 
   constructor(private fb: FormBuilder, private walletService: WalletService) {}
 
@@ -31,6 +32,7 @@ export class Erc20Component implements OnInit {
     const name = this.erc20FormGroup.get('name').value;
     const symbol = this.erc20FormGroup.get('symbol').value;
     const supply = this.erc20FormGroup.get('supply').value;
+    this.isLoading = true;
 
     try {
       const signer = this.walletService.provider.getSigner();
@@ -43,7 +45,9 @@ export class Erc20Component implements OnInit {
       await contract.deployed();
       this.tokenAddress = contract.address;
     } catch (error) {
-      alert('Something went wrong!');
+      console.error(error);
+    } finally {
+      this.isLoading = false;
     }
   }
 

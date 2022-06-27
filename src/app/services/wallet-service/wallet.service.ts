@@ -19,6 +19,9 @@ export class WalletService {
       (window as any).ethereum.on('accountsChanged', async () => {
         location.reload();
       });
+      (window as any).ethereum.on('chainChanged', async () => {
+        location.reload();
+      });
       (window as any).ethereum.on('disconnect', async () => {
         location.reload();
       });

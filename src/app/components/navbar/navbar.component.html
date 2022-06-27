@@ -4,6 +4,9 @@
     <h1 *ngIf="connected" class="dark:text-white text-center">
       {{ address | slice: 0:5 }}...{{ address | slice: 39:42 }}
     </h1>
+    <h1 *ngIf="connected" class="dark:text-white text-center">
+      {{ networkName }}
+    </h1>
     <button
       *ngIf="!connected"
       class="p-2 bg-stone-900 text-white dark:bg-white dark:text-black rounded-md hover:ring-1 hover:ring-gray-300 transition-colors duration-500"

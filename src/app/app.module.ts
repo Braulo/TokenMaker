@@ -7,6 +7,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { Erc20Component } from './components/erc20/erc20.component';
 import { Erc721Component } from './components/erc721/erc721.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
+import { SpinnerComponent } from './components/spinner/spinner.component';
 
 @NgModule({
   declarations: [
@@ -14,6 +15,7 @@ import { NavbarComponent } from './components/navbar/navbar.component';
     Erc20Component,
     Erc721Component,
     NavbarComponent,
+    SpinnerComponent,
   ],
   imports: [
     BrowserModule,
