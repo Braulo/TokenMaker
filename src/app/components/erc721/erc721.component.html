@@ -1,7 +1,7 @@
 <div>
   <form
     [formGroup]="erc721FormGroup"
-    class="bg-white dark:bg-gray-900 shadow-md rounded px-8 pt-6 pb-8 mb-4 h-96"
+    class="bg-white dark:bg-gray-900 shadow-md rounded px-8 pt-6 pb-8 mb-4 h-1/2"
     (ngSubmit)="onSubmit()"
   >
     <div class="mb-4">
@@ -35,6 +35,21 @@
       />
     </div>
     <div class="mb-4">
+      <label
+        class="block dark:text-white text-sm font-bold mb-2"
+        for="description"
+      >
+        Description*
+      </label>
+      <input
+        class="ng-invalid:bg-blue shadow appearance-none border rounded w-full py-2 px-3 text-black leading-tight focus:outline-none focus:shadow-outline"
+        id="description"
+        type="text"
+        placeholder="This is an awesome image"
+        formControlName="description"
+      />
+    </div>
+    <div class="mb-4">
       <label class="block dark:text-white text-sm font-bold mb-2" for="image">
         Image*
       </label>
@@ -56,6 +71,13 @@
         Create
       </button>
     </div>
+    <div *ngIf="contractAddress" class="mt-4 dark:text-white text-center">
+      <p>Awesome! Your Token is ready at:</p>
+      <p class="hover:text-[#133342] cursor-pointer" (click)="copyAddress()">
+        {{ contractAddress }}
+      </p>
+    </div>
+    <tm-spinner *ngIf="isLoading"></tm-spinner>
   </form>
   <div *ngIf="image">
     <p class="dark:text-white">Your Image</p>

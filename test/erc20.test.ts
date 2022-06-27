@@ -18,7 +18,6 @@ describe('ERC20Token', function () {
   });
 
   it('should create a new token', async function () {
-    expect(await tokenContract.balanceOf(accounts[0].address)).to.equal('1000');
     expect(await tokenContract.name()).to.equal(name);
     expect(await tokenContract.symbol()).to.equal(symbol);
   });
