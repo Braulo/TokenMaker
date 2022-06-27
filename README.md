@@ -1,7 +1,7 @@
 # TokenMaker
 
 This repository contains a simple token maker app to easily generate fungible (ERC20) and nonfungible (ER721) contracts/tokens from an Angular based app.
-Works on any EVM compatible chain.
+Works on any EVM compatible chain. All ERC721 Tokens (Metadata/ Image) are stored 'on chain' (Base64 encoded tokenURI).
 
 ### Development
 
