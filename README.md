@@ -5,7 +5,7 @@ Works on any EVM compatible chain. All ERC721 tokens (metadata/ image) are store
 
 ### Development
 
-1. Intall all node packages
+1. Install all node packages
 
 ```bash
 > npm install
